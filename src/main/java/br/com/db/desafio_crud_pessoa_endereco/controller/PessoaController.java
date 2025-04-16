@@ -1,6 +1,7 @@
 package br.com.db.desafio_crud_pessoa_endereco.controller;
 
 import br.com.db.desafio_crud_pessoa_endereco.model.Pessoa;
+import br.com.db.desafio_crud_pessoa_endereco.service.AtualizarPessoaService;
 import br.com.db.desafio_crud_pessoa_endereco.service.BuscarPessoaService;
 import br.com.db.desafio_crud_pessoa_endereco.service.CriarPessoaService;
 import br.com.db.desafio_crud_pessoa_endereco.service.DeletarPessoaService;
@@ -18,11 +19,13 @@ public class PessoaController {
     private final BuscarPessoaService buscarPessoaService;
     private final DeletarPessoaService deletarPessoaService;
     private final CriarPessoaService criarPessoaService;
+    private final AtualizarPessoaService atualizarPessoaService;
 
-    public PessoaController(BuscarPessoaService buscarPessoaService, DeletarPessoaService deletarPessoaService, CriarPessoaService criarPessoaService) {
+    public PessoaController(BuscarPessoaService buscarPessoaService, DeletarPessoaService deletarPessoaService, CriarPessoaService criarPessoaService, AtualizarPessoaService atualizarPessoaService) {
         this.buscarPessoaService = buscarPessoaService;
         this.deletarPessoaService = deletarPessoaService;
         this.criarPessoaService = criarPessoaService;
+        this.atualizarPessoaService = atualizarPessoaService;
     }
 
     @GetMapping
@@ -42,18 +45,17 @@ public class PessoaController {
                 .body(criarPessoaService.criarPessoa(pessoa));
     }
 
-
+    @PutMapping("/{id}")
+    public ResponseEntity<Pessoa> atualizarPessoaPorId(@PathVariable(value = "id") Long id,
+                                                       @RequestBody Pessoa pessoa){
+        atualizarPessoaService.atualizarPessoaPorId(id, pessoa);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarPessoaPorId(@PathVariable(value = "id") Long id) {
         deletarPessoaService.deletarPessoaPorId(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-
-
-
-
-
-
 
 }
