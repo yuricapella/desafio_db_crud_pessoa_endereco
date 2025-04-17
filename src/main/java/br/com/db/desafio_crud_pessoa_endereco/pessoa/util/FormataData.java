@@ -7,11 +7,6 @@ import java.time.format.DateTimeFormatter;
 
 public class FormataData {
     public static final String PADRAO_DATA_HORA = "dd/MM/yyyy:HH:mm:ss";
-    public static final String PADRAO_DATA = "dd/MM/yyyy";
-
-    public static String formatarData(LocalDate data) {
-        return data.format(DateTimeFormatter.ofPattern(PADRAO_DATA));
-    }
 
     public static String formatarDataHora(LocalDateTime dataHora) {
         return dataHora.format(DateTimeFormatter.ofPattern(PADRAO_DATA_HORA));

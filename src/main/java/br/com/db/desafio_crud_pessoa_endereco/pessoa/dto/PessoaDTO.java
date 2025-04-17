@@ -1,8 +1,10 @@
-package br.com.db.desafio_crud_pessoa_endereco.dto;
+package br.com.db.desafio_crud_pessoa_endereco.dto.pessoa;
 
+import br.com.db.desafio_crud_pessoa_endereco.dto.endereco.EnderecoDTO;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class PessoaDTO {
     private String nome;
@@ -10,6 +12,7 @@ public class PessoaDTO {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
     private int idade;
+    private List<EnderecoDTO> enderecos;
 
     public PessoaDTO(String nome, String cpf, LocalDate dataNascimento, int idade) {
         this.nome = nome;
@@ -21,6 +24,14 @@ public class PessoaDTO {
     public PessoaDTO() {
     }
 
+
+    public List<EnderecoDTO> getEnderecos() {
+        return enderecos;
+    }
+
+    public void setEnderecos(List<EnderecoDTO> enderecos) {
+        this.enderecos = enderecos;
+    }
 
     public String getNome() {
         return nome;

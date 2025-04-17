@@ -1,7 +1,13 @@
 INSERT INTO pessoa (nome, cpf, data_nascimento, data_criacao)
 VALUES
-    ('João Silva', '123.456.789-00', '1995-04-16', NOW()),
-    ('Maria Oliveira', '234.567.890-11', '1998-08-22', NOW()),
-    ('Pedro Santos', '345.678.901-22', '1989-12-10', NOW()),
-    ('Ana Rodrigues', '456.789.012-33', '1996-05-05', NOW()),
-    ('Lucas Pereira', '567.890.123-44', '1985-07-30', NOW());
+    ('João Silva', '153.921.000-66', '1995-04-16', NOW()),
+    ('Maria Oliveira', '516.677.210-54', '1998-08-22', NOW()),
+    ('Pedro Santos', '750.848.940-37', '1989-12-10', NOW());
+
+
+INSERT INTO endereco (rua, numero, bairro, cidade, estado, cep, endereco_principal, pessoa_id, data_criacao)
+VALUES
+    ('Rua A', '123', 'Bairro X', 'Cidade Y', 'SP', '12345-678', TRUE, 1, NOW()),
+    ('Rua B', '456', 'Bairro Z', 'Cidade W', 'RJ', '23456-789', FALSE, 1, NOW()),
+    ('Rua C', '789', 'Bairro Y', 'Cidade V', 'MG', '34567-890', TRUE, 2, NOW()),
+    ('Rua D', '101', 'Bairro W', 'Cidade U', 'BA', '45678-901', FALSE, 3, NOW());

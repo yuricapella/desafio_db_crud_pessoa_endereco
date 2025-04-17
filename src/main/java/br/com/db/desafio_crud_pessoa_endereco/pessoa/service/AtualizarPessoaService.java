@@ -1,13 +1,10 @@
 package br.com.db.desafio_crud_pessoa_endereco.service;
 
-import br.com.db.desafio_crud_pessoa_endereco.dto.AtualizarPessoaRequestDTO;
-import br.com.db.desafio_crud_pessoa_endereco.dto.mapper.AtualizarPessoaRequestMapper;
-import br.com.db.desafio_crud_pessoa_endereco.dto.mapper.CriarPessoaRequestMapper;
+import br.com.db.desafio_crud_pessoa_endereco.dto.pessoa.AtualizarPessoaRequestDTO;
+import br.com.db.desafio_crud_pessoa_endereco.mapper.pessoa.AtualizarPessoaRequestMapper;
 import br.com.db.desafio_crud_pessoa_endereco.model.Pessoa;
 import br.com.db.desafio_crud_pessoa_endereco.repository.PessoaRepository;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
 
 @Service
 public class AtualizarPessoaService {

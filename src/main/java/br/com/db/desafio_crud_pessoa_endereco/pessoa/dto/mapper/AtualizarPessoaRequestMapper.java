@@ -1,6 +1,6 @@
-package br.com.db.desafio_crud_pessoa_endereco.dto.mapper;
+package br.com.db.desafio_crud_pessoa_endereco.mapper.pessoa;
 
-import br.com.db.desafio_crud_pessoa_endereco.dto.AtualizarPessoaRequestDTO;
+import br.com.db.desafio_crud_pessoa_endereco.dto.pessoa.AtualizarPessoaRequestDTO;
 import br.com.db.desafio_crud_pessoa_endereco.model.Pessoa;
 
 import java.time.LocalDateTime;
