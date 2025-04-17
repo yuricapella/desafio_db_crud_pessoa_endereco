@@ -1,14 +1,14 @@
-package br.com.db.desafio_crud_pessoa_endereco.controller;
+package br.com.db.desafio_crud_pessoa_endereco.pessoa.controller;
 
-import br.com.db.desafio_crud_pessoa_endereco.dto.AtualizarPessoaRequestDTO;
-import br.com.db.desafio_crud_pessoa_endereco.dto.CriarPessoaRequestDTO;
-import br.com.db.desafio_crud_pessoa_endereco.dto.PessoaDTO;
-import br.com.db.desafio_crud_pessoa_endereco.dto.mapper.CriarPessoaRequestMapper;
-import br.com.db.desafio_crud_pessoa_endereco.model.Pessoa;
-import br.com.db.desafio_crud_pessoa_endereco.service.AtualizarPessoaService;
-import br.com.db.desafio_crud_pessoa_endereco.service.BuscarPessoaService;
-import br.com.db.desafio_crud_pessoa_endereco.service.CriarPessoaService;
-import br.com.db.desafio_crud_pessoa_endereco.service.DeletarPessoaService;
+import br.com.db.desafio_crud_pessoa_endereco.pessoa.dto.AtualizarPessoaRequestDTO;
+import br.com.db.desafio_crud_pessoa_endereco.pessoa.dto.CriarPessoaRequestDTO;
+import br.com.db.desafio_crud_pessoa_endereco.pessoa.dto.PessoaDTO;
+import br.com.db.desafio_crud_pessoa_endereco.pessoa.dto.mapper.CriarPessoaRequestMapper;
+import br.com.db.desafio_crud_pessoa_endereco.pessoa.model.Pessoa;
+import br.com.db.desafio_crud_pessoa_endereco.pessoa.service.AtualizarPessoaService;
+import br.com.db.desafio_crud_pessoa_endereco.pessoa.service.BuscarPessoaService;
+import br.com.db.desafio_crud_pessoa_endereco.pessoa.service.CriarPessoaService;
+import br.com.db.desafio_crud_pessoa_endereco.pessoa.service.DeletarPessoaService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,7 +51,7 @@ public class PessoaController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Pessoa> atualizarPessoaPorId(@PathVariable(value = "id") Long id,
-                                                       @RequestBody AtualizarPessoaRequestDTO pessoa){
+                                                       @RequestBody @Valid AtualizarPessoaRequestDTO pessoa){
         atualizarPessoaService.atualizarPessoaPorId(pessoa,id);
         return ResponseEntity.status(HttpStatus.OK).build();
     }

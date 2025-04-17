@@ -1,9 +1,9 @@
-package br.com.db.desafio_crud_pessoa_endereco.mapper.pessoa;
+package br.com.db.desafio_crud_pessoa_endereco.pessoa.dto.mapper;
 
-import br.com.db.desafio_crud_pessoa_endereco.dto.pessoa.PessoaDTO;
-import br.com.db.desafio_crud_pessoa_endereco.mapper.endereco.EnderecoMapper;
-import br.com.db.desafio_crud_pessoa_endereco.model.Pessoa;
-import br.com.db.desafio_crud_pessoa_endereco.util.FormataData;
+import br.com.db.desafio_crud_pessoa_endereco.pessoa.dto.PessoaDTO;
+import br.com.db.desafio_crud_pessoa_endereco.endereco.dto.mapper.EnderecoMapper;
+import br.com.db.desafio_crud_pessoa_endereco.pessoa.model.Pessoa;
+import br.com.db.desafio_crud_pessoa_endereco.pessoa.util.FormataData;
 
 import java.util.stream.Collectors;
 

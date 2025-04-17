@@ -1,10 +1,7 @@
-package br.com.db.desafio_crud_pessoa_endereco.dto;
+package br.com.db.desafio_crud_pessoa_endereco.pessoa.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Past;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.time.LocalDate;
@@ -14,7 +11,7 @@ public class AtualizarPessoaRequestDTO {
     @Size(min = 3, message = "Nome deve conter no mínimo 3 letras.")
     private String nome;
 
-    @CPF(message = "Cpf está fora do padrão (11 dígitos). Exemplo: 000.000.000-00")
+    @Pattern(regexp = "\\d{11}", message = "CPF deve conter exatamente 11 dígitos numéricos, sem pontos ou traços.")
     private String cpf;
 
     @NotNull(message = "Data de nascimento é obrigatória.")

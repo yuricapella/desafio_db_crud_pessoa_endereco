@@ -1,7 +1,7 @@
-package br.com.db.desafio_crud_pessoa_endereco.service;
+package br.com.db.desafio_crud_pessoa_endereco.pessoa.service;
 
-import br.com.db.desafio_crud_pessoa_endereco.model.Pessoa;
-import br.com.db.desafio_crud_pessoa_endereco.repository.PessoaRepository;
+import br.com.db.desafio_crud_pessoa_endereco.pessoa.model.Pessoa;
+import br.com.db.desafio_crud_pessoa_endereco.pessoa.repository.PessoaRepository;
 import org.springframework.stereotype.Service;
 
 @Service

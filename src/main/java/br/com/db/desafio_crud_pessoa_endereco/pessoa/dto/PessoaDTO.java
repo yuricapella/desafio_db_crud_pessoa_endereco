@@ -1,6 +1,6 @@
-package br.com.db.desafio_crud_pessoa_endereco.dto.pessoa;
+package br.com.db.desafio_crud_pessoa_endereco.pessoa.dto;
 
-import br.com.db.desafio_crud_pessoa_endereco.dto.endereco.EnderecoDTO;
+import br.com.db.desafio_crud_pessoa_endereco.endereco.dto.EnderecoDTO;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDate;

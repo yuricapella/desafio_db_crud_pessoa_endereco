@@ -1,17 +1,19 @@
-package br.com.db.desafio_crud_pessoa_endereco.dto;
+package br.com.db.desafio_crud_pessoa_endereco.pessoa.dto;
 
+import br.com.db.desafio_crud_pessoa_endereco.endereco.dto.CriarEnderecoRequestDTO;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class CriarPessoaRequestDTO {
     @NotBlank(message = "Nome não pode estar vazio.")
     @Size(min = 3, message = "Nome deve conter no mínimo 3 letras.")
     private String nome;
 
-    @CPF(message = "Cpf está fora do padrão (11 dígitos). Exemplo: 000.000.000-00")
+    @Pattern(regexp = "\\d{11}", message = "CPF deve conter exatamente 11 dígitos numéricos, sem pontos ou traços.")
     private String cpf;
 
     @NotNull(message = "Data de nascimento é obrigatória.")
@@ -19,13 +21,22 @@ public class CriarPessoaRequestDTO {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
 
-    public CriarPessoaRequestDTO() {
-    }
+    @NotEmpty(message = "Deve haver pelo menos um endereço.")
+    private List<CriarEnderecoRequestDTO> enderecos;
 
-    public CriarPessoaRequestDTO(String nome, String cpf, LocalDate dataNascimento) {
+    public CriarPessoaRequestDTO(String nome, String cpf, LocalDate dataNascimento, List<CriarEnderecoRequestDTO> enderecos) {
         this.nome = nome;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
+        this.enderecos = enderecos;
+    }
+
+    public List<CriarEnderecoRequestDTO> getEnderecos() {
+        return enderecos;
+    }
+
+    public void setEnderecos(List<CriarEnderecoRequestDTO> enderecos) {
+        this.enderecos = enderecos;
     }
 
     public String getNome() {

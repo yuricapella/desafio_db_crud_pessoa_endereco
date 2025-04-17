@@ -1,12 +1,22 @@
-package br.com.db.desafio_crud_pessoa_endereco.model;
+package br.com.db.desafio_crud_pessoa_endereco.pessoa.model;
 
+import br.com.db.desafio_crud_pessoa_endereco.endereco.model.Endereco;
+import br.com.db.desafio_crud_pessoa_endereco.pessoa.util.FormataData;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import org.hibernate.validator.constraints.br.CPF;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+
+
+@JsonPropertyOrder({
+        "id", "nome", "cpf", "dataNascimento", "idade",
+        "dataCriacao", "dataAtualizacao", "enderecos"
+})
 
 @Entity
 @Table(name = "PESSOA")
@@ -20,11 +30,15 @@ public class Pessoa {
     @Column(unique = true)
     private String cpf;
 
+    @JsonFormat(pattern = FormataData.PADRAO_DATA)
     private LocalDate dataNascimento;
+    @JsonFormat(pattern = FormataData.PADRAO_DATA_HORA)
     private LocalDateTime dataCriacao;
+    @JsonFormat(pattern = FormataData.PADRAO_DATA_HORA)
     private LocalDateTime dataAtualizacao;
 
     @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Endereco> enderecos;
 
     public Pessoa() {
@@ -36,6 +50,12 @@ public class Pessoa {
         this.nome = nome;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
+    }
+
+    @Transient
+    @JsonProperty
+    public int getIdade(){
+        return FormataData.calcularIdade(dataNascimento);
     }
 
     public List<Endereco> getEnderecos() {
