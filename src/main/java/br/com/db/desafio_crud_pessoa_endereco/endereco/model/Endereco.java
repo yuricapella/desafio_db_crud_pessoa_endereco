@@ -1,7 +1,9 @@
 package br.com.db.desafio_crud_pessoa_endereco.endereco.model;
 
 import br.com.db.desafio_crud_pessoa_endereco.pessoa.model.Pessoa;
+import br.com.db.desafio_crud_pessoa_endereco.util.FormataData;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -20,7 +22,9 @@ public class Endereco {
     private String estado;
     private String cep;
 
+    @JsonFormat(pattern = FormataData.PADRAO_DATA_HORA)
     private LocalDateTime dataCriacao;
+    @JsonFormat(pattern = FormataData.PADRAO_DATA_HORA)
     private LocalDateTime dataAtualizacao;
 
     @ManyToOne

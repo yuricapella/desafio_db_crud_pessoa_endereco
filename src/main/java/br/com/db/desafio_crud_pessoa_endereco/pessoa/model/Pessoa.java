@@ -1,7 +1,7 @@
 package br.com.db.desafio_crud_pessoa_endereco.pessoa.model;
 
 import br.com.db.desafio_crud_pessoa_endereco.endereco.model.Endereco;
-import br.com.db.desafio_crud_pessoa_endereco.pessoa.util.FormataData;
+import br.com.db.desafio_crud_pessoa_endereco.util.FormataData;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;

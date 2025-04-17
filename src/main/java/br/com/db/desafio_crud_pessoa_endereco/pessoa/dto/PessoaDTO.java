@@ -1,6 +1,7 @@
 package br.com.db.desafio_crud_pessoa_endereco.pessoa.dto;
 
 import br.com.db.desafio_crud_pessoa_endereco.endereco.dto.EnderecoDTO;
+import br.com.db.desafio_crud_pessoa_endereco.util.FormataCPF;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDate;
@@ -42,7 +43,7 @@ public class PessoaDTO {
     }
 
     public String getCpf() {
-        return cpf;
+        return FormataCPF.formatar(this.cpf);
     }
 
     public void setCpf(String cpf) {

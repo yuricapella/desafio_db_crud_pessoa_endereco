@@ -1,4 +1,4 @@
-package br.com.db.desafio_crud_pessoa_endereco.pessoa.util;
+package br.com.db.desafio_crud_pessoa_endereco.util;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

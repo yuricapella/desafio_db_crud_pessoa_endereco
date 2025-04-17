@@ -2,7 +2,6 @@ package br.com.db.desafio_crud_pessoa_endereco.pessoa.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.*;
-import org.hibernate.validator.constraints.br.CPF;
 
 import java.time.LocalDate;
 
