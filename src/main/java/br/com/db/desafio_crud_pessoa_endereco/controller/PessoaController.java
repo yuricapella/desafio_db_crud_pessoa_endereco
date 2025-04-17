@@ -1,5 +1,9 @@
 package br.com.db.desafio_crud_pessoa_endereco.controller;
 
+import br.com.db.desafio_crud_pessoa_endereco.dto.AtualizarPessoaRequestDTO;
+import br.com.db.desafio_crud_pessoa_endereco.dto.CriarPessoaRequestDTO;
+import br.com.db.desafio_crud_pessoa_endereco.dto.PessoaDTO;
+import br.com.db.desafio_crud_pessoa_endereco.dto.mapper.CriarPessoaRequestMapper;
 import br.com.db.desafio_crud_pessoa_endereco.model.Pessoa;
 import br.com.db.desafio_crud_pessoa_endereco.service.AtualizarPessoaService;
 import br.com.db.desafio_crud_pessoa_endereco.service.BuscarPessoaService;
@@ -29,7 +33,7 @@ public class PessoaController {
     }
 
     @GetMapping
-    public List<Pessoa> buscarTodasPessoas(){
+    public List<PessoaDTO> buscarTodasPessoas(){
         return buscarPessoaService.buscarTodasPessoas();
     }
 
@@ -39,16 +43,16 @@ public class PessoaController {
     }
 
     @PostMapping
-    public ResponseEntity<Pessoa> criarPessoa(@RequestBody Pessoa pessoa){
+    public ResponseEntity<Pessoa> criarPessoa(@RequestBody @Valid CriarPessoaRequestDTO pessoa){
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(criarPessoaService.criarPessoa(pessoa));
+                .body(criarPessoaService.criarPessoa(CriarPessoaRequestMapper.toEntity(pessoa)));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Pessoa> atualizarPessoaPorId(@PathVariable(value = "id") Long id,
-                                                       @RequestBody Pessoa pessoa){
-        atualizarPessoaService.atualizarPessoaPorId(id, pessoa);
+                                                       @RequestBody AtualizarPessoaRequestDTO pessoa){
+        atualizarPessoaService.atualizarPessoaPorId(pessoa,id);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 

@@ -1,5 +1,8 @@
 package br.com.db.desafio_crud_pessoa_endereco.service;
 
+import br.com.db.desafio_crud_pessoa_endereco.dto.AtualizarPessoaRequestDTO;
+import br.com.db.desafio_crud_pessoa_endereco.dto.mapper.AtualizarPessoaRequestMapper;
+import br.com.db.desafio_crud_pessoa_endereco.dto.mapper.CriarPessoaRequestMapper;
 import br.com.db.desafio_crud_pessoa_endereco.model.Pessoa;
 import br.com.db.desafio_crud_pessoa_endereco.repository.PessoaRepository;
 import org.springframework.stereotype.Service;
@@ -17,12 +20,9 @@ public class AtualizarPessoaService {
         this.buscarPessoaService = buscarPessoaService;
     }
 
-    public void atualizarPessoaPorId(Long id, Pessoa pessoaAtualizada){
+    public void atualizarPessoaPorId(AtualizarPessoaRequestDTO pessoaAtualizada, Long id){
         Pessoa pessoaExistente = buscarPessoaService.buscarPessoaPorId(id);
-        pessoaExistente.setNome(pessoaAtualizada.getNome());
-        pessoaExistente.setCpf(pessoaAtualizada.getCpf());
-        pessoaExistente.setDataNascimento(pessoaAtualizada.getDataNascimento());
-        pessoaExistente.setDataAtualizacao(LocalDateTime.now());
+        AtualizarPessoaRequestMapper.updateEntity(pessoaExistente, pessoaAtualizada);
         pessoaRepository.save(pessoaExistente);
     }
 }
