@@ -1,10 +1,13 @@
 package br.com.db.desafio_crud_pessoa_endereco.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.time.LocalDate;
 
 public class PessoaDTO {
     private String nome;
     private String cpf;
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
     private int idade;
 

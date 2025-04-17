@@ -1,5 +1,6 @@
 package br.com.db.desafio_crud_pessoa_endereco.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -15,6 +16,7 @@ public class CriarPessoaRequestDTO {
 
     @NotNull(message = "Data de nascimento é obrigatória.")
     @Past(message = "Data de nascimento deve ser anterior ao dia de hoje.")
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
 
     public CriarPessoaRequestDTO() {
