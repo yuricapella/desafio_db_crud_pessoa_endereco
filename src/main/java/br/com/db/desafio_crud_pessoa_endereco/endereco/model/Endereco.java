@@ -1,6 +1,10 @@
-package br.com.db.desafio_crud_pessoa_endereco.model;
+package br.com.db.desafio_crud_pessoa_endereco.endereco.model;
 
+import br.com.db.desafio_crud_pessoa_endereco.pessoa.model.Pessoa;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "ENDERECO")
@@ -16,15 +20,19 @@ public class Endereco {
     private String estado;
     private String cep;
 
+    private LocalDateTime dataCriacao;
+    private LocalDateTime dataAtualizacao;
+
     @ManyToOne
     @JoinColumn(name = "pessoa_id", nullable = false)
+    @JsonBackReference
     private Pessoa pessoa;
 
     @Column(name = "endereco_principal")
     private boolean enderecoPrincipal;
 
     public Endereco() {
-
+        this.dataCriacao = LocalDateTime.now();
     }
 
     public Endereco(Long id, String rua, String numero, String bairro, String cidade, String estado, String cep) {
@@ -35,6 +43,38 @@ public class Endereco {
         this.cidade = cidade;
         this.estado = estado;
         this.cep = cep;
+    }
+
+    public LocalDateTime getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public void setDataCriacao(LocalDateTime dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
+
+    public LocalDateTime getDataAtualizacao() {
+        return dataAtualizacao;
+    }
+
+    public void setDataAtualizacao(LocalDateTime dataAtualizacao) {
+        this.dataAtualizacao = dataAtualizacao;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+
+    public boolean isEnderecoPrincipal() {
+        return enderecoPrincipal;
+    }
+
+    public void setEnderecoPrincipal(boolean enderecoPrincipal) {
+        this.enderecoPrincipal = enderecoPrincipal;
     }
 
     public Long getId() {
