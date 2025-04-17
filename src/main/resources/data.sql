@@ -1,8 +1,8 @@
 INSERT INTO pessoa (nome, cpf, data_nascimento, data_criacao)
 VALUES
-    ('João Silva', '153.921.000-66', '1995-04-16', NOW()),
-    ('Maria Oliveira', '516.677.210-54', '1998-08-22', NOW()),
-    ('Pedro Santos', '750.848.940-37', '1989-12-10', NOW());
+    ('João Silva', '15392100066', '1995-04-16', NOW()),
+    ('Maria Oliveira', '51667721054', '1998-08-22', NOW()),
+    ('Pedro Santos', '75084894037', '1989-12-10', NOW());
 
 
 INSERT INTO endereco (rua, numero, bairro, cidade, estado, cep, endereco_principal, pessoa_id, data_criacao)
