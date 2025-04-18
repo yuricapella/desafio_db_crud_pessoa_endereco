@@ -1,3 +1,5 @@
+<!-- Voltar ao topo -->
+<a id="voltar-ao-topo"></a>
 # 🧠 Projeto CRUD Pessoa e Endereço
 
 ## 💼 Desafio da Empresa
@@ -106,4 +108,4 @@ Anotações pessoais e técnicas que apontam:
 
 Feito com dedicação 💙 no desafio da **DB**.
 
-[🔝 Voltar ao topo](#-desafio-crud-pessoa-e-endereço)
+[🔝 Voltar ao topo](#voltar-ao-topo)
