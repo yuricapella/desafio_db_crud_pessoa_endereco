@@ -2,6 +2,7 @@ package br.com.db.desafio_crud_pessoa_endereco.pessoa.service;
 
 import br.com.db.desafio_crud_pessoa_endereco.pessoa.dto.PessoaDTO;
 import br.com.db.desafio_crud_pessoa_endereco.pessoa.dto.mapper.PessoaMapper;
+import br.com.db.desafio_crud_pessoa_endereco.exception.PessoaNaoEncontradaException;
 import br.com.db.desafio_crud_pessoa_endereco.pessoa.model.Pessoa;
 import br.com.db.desafio_crud_pessoa_endereco.pessoa.repository.PessoaRepository;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,6 @@ public class BuscarPessoaService {
     public Pessoa buscarPessoaPorId(Long id) {
         Optional<Pessoa> pessoaOptional = pessoaRepository.findById(id);
         return pessoaOptional
-                .orElseThrow(() -> new RuntimeException("Usuário com ID" + id + " não encontrado"));
+                .orElseThrow(() -> new PessoaNaoEncontradaException ("Pessoa com ID " + id + " não encontrada"));
     }
 }
