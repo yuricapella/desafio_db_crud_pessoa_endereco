@@ -1,0 +1,810 @@
+{
+	"info": {
+		"_postman_id": "b53653ed-4503-4439-8032-593c8dd74a7d",
+		"name": "desafio-crud-db",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43702238",
+		"_collection_link": "https://yuricapella.postman.co/workspace/Yuri-Capella's-Workspace~eed12cec-649d-4622-8f2c-fee779577473/collection/43702238-b53653ed-4503-4439-8032-593c8dd74a7d?action=share&source=collection_link&creator=43702238"
+	},
+	"item": [
+		{
+			"name": "pessoa",
+			"item": [
+				{
+					"name": "sucesso",
+					"item": [
+						{
+							"name": "Listar Pessoas",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/pessoas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pessoas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar pessoa por id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/pessoas/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pessoas",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deletar pessoa",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/pessoas/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pessoas",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar pessoa",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"nome\": \"João Silva atualizado\",\r\n        \"cpf\": \"15392100066\",\r\n        \"dataNascimento\": \"16/04/1990\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/pessoas/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pessoas",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Criar pessoa",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"nome\": \"Ricardo Silva\",\r\n        \"cpf\": \"12345678900\",\r\n        \"dataNascimento\": \"01/02/1980\",\r\n        \"enderecos\": [\r\n            {\r\n                \"rua\": \"Rua A\",\r\n                \"numero\": \"123\",\r\n                \"bairro\": \"Bairro X\",\r\n                \"cidade\": \"Cidade Y\",\r\n                \"estado\": \"SP\",\r\n                \"cep\": \"12345-678\",\r\n                \"enderecoPrincipal\": true\r\n            }\r\n        ]\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/pessoas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pessoas"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "falha",
+					"item": [
+						{
+							"name": "Atualizar pessoa inexistente",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"nome\": \"João Silva atualizado 2\",\r\n        \"cpf\": \"15392100066\",\r\n        \"dataNascimento\": \"16/04/1995\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/pessoas/999",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pessoas",
+										"999"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Criar pessoa com cpf formatado",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"nome\": \"João Silva\",\r\n        \"cpf\": \"153.921.000-66\",\r\n        \"dataNascimento\": \"16/04/1995\",\r\n        \"enderecos\": [\r\n            {\r\n                \"rua\": \"Rua A\",\r\n                \"numero\": \"123\",\r\n                \"bairro\": \"Bairro X\",\r\n                \"cidade\": \"Cidade Y\",\r\n                \"estado\": \"SP\",\r\n                \"cep\": \"12345-678\",\r\n                \"enderecoPrincipal\": true\r\n            },\r\n            {\r\n                \"rua\": \"Rua B\",\r\n                \"numero\": \"456\",\r\n                \"bairro\": \"Bairro Z\",\r\n                \"cidade\": \"Cidade W\",\r\n                \"estado\": \"RJ\",\r\n                \"cep\": \"23456-789\",\r\n                \"enderecoPrincipal\": false\r\n            }\r\n        ]\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/pessoas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pessoas"
+									]
+								},
+								"description": "tentar cadastrar com - não da."
+							},
+							"response": []
+						},
+						{
+							"name": "Criar pessoa com mesmo cpf",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"nome\": \"João Silva\",\r\n        \"cpf\": \"15392100066\",\r\n        \"dataNascimento\": \"16/04/1995\",\r\n        \"idade\": 30,\r\n        \"enderecos\": [\r\n            {\r\n                \"rua\": \"Rua A\",\r\n                \"numero\": \"123\",\r\n                \"bairro\": \"Bairro X\",\r\n                \"cidade\": \"Cidade Y\",\r\n                \"estado\": \"SP\",\r\n                \"cep\": \"12345-678\",\r\n                \"enderecoPrincipal\": true\r\n            },\r\n            {\r\n                \"rua\": \"Rua B\",\r\n                \"numero\": \"456\",\r\n                \"bairro\": \"Bairro Z\",\r\n                \"cidade\": \"Cidade W\",\r\n                \"estado\": \"RJ\",\r\n                \"cep\": \"23456-789\",\r\n                \"enderecoPrincipal\": false\r\n            }\r\n        ]\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/pessoas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pessoas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar pessoa com cpf formatado",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"nome\": \"João Silva atualizado\",\r\n        \"cpf\": \"153.921.000-66\",\r\n        \"dataNascimento\": \"16/04/1995\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/pessoas/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pessoas",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deletar pessoa com id inexistente",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/pessoas/999",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pessoas",
+										"999"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Criar Pessoa sem endereço",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"Lucas Silva\",\r\n  \"cpf\": \"92942874083\",\r\n  \"dataNascimento\": \"16/04/1995\",\r\n  \"enderecos\": [\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/pessoas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pessoas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar pessoa por id inexistente",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/pessoas/999",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pessoas",
+										"999"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar pessoa data futura",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"nome\": \"João Silva atualizado\",\r\n        \"cpf\": \"15392100066\",\r\n        \"dataNascimento\": \"20/04/2099\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/pessoas/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pessoas",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar pessoa cpf 12 digitos",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"nome\": \"João Silva atualizado 2\",\r\n        \"cpf\": \"153921000662\",\r\n        \"dataNascimento\": \"16/04/1995\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/pessoas/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pessoas",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "endereco",
+			"item": [
+				{
+					"name": "sucesso",
+					"item": [
+						{
+							"name": "Listar endereco por id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/enderecos/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"enderecos",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deletar endereço",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/enderecos/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"enderecos",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar endereco",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"rua\": \"Rua atualizada\",\r\n  \"numero\": \"123\",\r\n  \"bairro\": \"Bairro X\",\r\n  \"cidade\": \"Cidade Y\",\r\n  \"estado\": \"SP\",\r\n  \"cep\": \"12345678\",\r\n  \"enderecoPrincipal\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/enderecos/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"enderecos",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Enderecos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/enderecos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"enderecos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Criar endereco",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"rua\": \"Rua B\",\r\n  \"numero\": \"123\",\r\n  \"bairro\": \"Bairro X\",\r\n  \"cidade\": \"Cidade Y\",\r\n  \"estado\": \"SP\",\r\n  \"cep\": \"12345678\",\r\n  \"enderecoPrincipal\": true,\r\n  \"pessoaId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/enderecos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"enderecos"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "falha",
+					"item": [
+						{
+							"name": "Listar endereco por id inexistente",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/enderecos/999",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"enderecos",
+										"999"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar endereco inexistente",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"rua\": \"Rua atualizada\",\r\n  \"numero\": \"123\",\r\n  \"bairro\": \"Bairro X\",\r\n  \"cidade\": \"Cidade Y\",\r\n  \"estado\": \"SP\",\r\n  \"cep\": \"12345678\",\r\n  \"enderecoPrincipal\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/enderecos/999",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"enderecos",
+										"999"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CEP com menos de 8 dígitos",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"rua\": \"Rua atualizada\",\r\n  \"numero\": \"123\",\r\n  \"bairro\": \"Bairro X\",\r\n  \"cidade\": \"Cidade Y\",\r\n  \"estado\": \"SP\",\r\n  \"cep\": \"1234567\",\r\n  \"enderecoPrincipal\": true\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/enderecos/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"enderecos",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Estado com número (inválido)",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"rua\": \"Rua atualizada\",\r\n  \"numero\": \"123\",\r\n  \"bairro\": \"Bairro X\",\r\n  \"cidade\": \"Cidade Y\",\r\n  \"estado\": \"S1\",\r\n  \"cep\": \"12345678\",\r\n  \"enderecoPrincipal\": true\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/enderecos/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"enderecos",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Endereço principal nulo",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"rua\": \"Rua atualizada\",\r\n  \"numero\": \"123\",\r\n  \"bairro\": \"Bairro X\",\r\n  \"cidade\": \"Cidade Y\",\r\n  \"estado\": \"SP\",\r\n  \"cep\": \"12345678\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/enderecos/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"enderecos",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deletar endereço inexistente",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/enderecos/999",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"enderecos",
+										"999"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "rua vazia",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"rua\": \"\",\r\n  \"numero\": \"123\",\r\n  \"bairro\": \"Bairro X\",\r\n  \"cidade\": \"Cidade Y\",\r\n  \"estado\": \"SP\",\r\n  \"cep\": \"12345678\",\r\n  \"enderecoPrincipal\": true,\r\n  \"pessoaId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/enderecos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"enderecos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Número com caracteres inválidos",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"rua\": \"Rua B\",\r\n  \"numero\": \"123##\",\r\n  \"bairro\": \"Bairro X\",\r\n  \"cidade\": \"Cidade Y\",\r\n  \"estado\": \"SP\",\r\n  \"cep\": \"12345678\",\r\n  \"enderecoPrincipal\": true,\r\n  \"pessoaId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/enderecos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"enderecos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Estado com mais de 2 letras",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"rua\": \"Rua B\",\r\n  \"numero\": \"123\",\r\n  \"bairro\": \"Bairro X\",\r\n  \"cidade\": \"Cidade Y\",\r\n  \"estado\": \"São Paulo\",\r\n  \"cep\": \"12345678\",\r\n  \"enderecoPrincipal\": true,\r\n  \"pessoaId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/enderecos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"enderecos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CEP com traço (inválido para criação)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"rua\": \"Rua B\",\r\n  \"numero\": \"123\",\r\n  \"bairro\": \"Bairro X\",\r\n  \"cidade\": \"Cidade Y\",\r\n  \"estado\": \"SP\",\r\n  \"cep\": \"12345-678\",\r\n  \"enderecoPrincipal\": true,\r\n  \"pessoaId\": 1\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/enderecos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"enderecos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pessoaId negativo",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"rua\": \"Rua B\",\r\n  \"numero\": \"123\",\r\n  \"bairro\": \"Bairro X\",\r\n  \"cidade\": \"Cidade Y\",\r\n  \"estado\": \"SP\",\r\n  \"cep\": \"12345678\",\r\n  \"enderecoPrincipal\": true,\r\n  \"pessoaId\": -5\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/enderecos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"enderecos"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
