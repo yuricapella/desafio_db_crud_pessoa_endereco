@@ -1,4 +1,3 @@
-<!-- Voltar ao topo -->
 <a id="voltar-ao-topo"></a>
 # 🧠 Projeto CRUD Pessoa e Endereço
 
