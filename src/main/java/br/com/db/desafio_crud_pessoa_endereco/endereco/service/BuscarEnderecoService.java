@@ -1,7 +1,7 @@
 package br.com.db.desafio_crud_pessoa_endereco.endereco.service;
 
-import br.com.db.desafio_crud_pessoa_endereco.endereco.dto.EnderecoDTO;
-import br.com.db.desafio_crud_pessoa_endereco.endereco.dto.mapper.EnderecoMapper;
+import br.com.db.desafio_crud_pessoa_endereco.endereco.dto.EnderecoResponseDTO;
+import br.com.db.desafio_crud_pessoa_endereco.endereco.dto.mapper.EnderecoResponseMapper;
 import br.com.db.desafio_crud_pessoa_endereco.endereco.model.Endereco;
 import br.com.db.desafio_crud_pessoa_endereco.endereco.repository.EnderecoRepository;
 import br.com.db.desafio_crud_pessoa_endereco.exception.EnderecoNaoEncontrado;
@@ -20,10 +20,10 @@ public class BuscarEnderecoService {
         this.enderecoRepository = enderecoRepository;
     }
 
-    public List<EnderecoDTO> buscarTodosEnderecos() {
+    public List<EnderecoResponseDTO> buscarTodosEnderecos() {
         return enderecoRepository.findAll()
                 .stream()
-                .map(EnderecoMapper::toEnderecoDTO)
+                .map(EnderecoResponseMapper::toEnderecoDTO)
                 .collect(Collectors.toList());
     }
 

@@ -1,7 +1,7 @@
 package br.com.db.desafio_crud_pessoa_endereco.pessoa.service;
 
-import br.com.db.desafio_crud_pessoa_endereco.pessoa.dto.PessoaDTO;
-import br.com.db.desafio_crud_pessoa_endereco.pessoa.dto.mapper.PessoaMapper;
+import br.com.db.desafio_crud_pessoa_endereco.pessoa.dto.PessoaResponseDTO;
+import br.com.db.desafio_crud_pessoa_endereco.pessoa.dto.mapper.PessoaResponseMapper;
 import br.com.db.desafio_crud_pessoa_endereco.exception.PessoaNaoEncontradaException;
 import br.com.db.desafio_crud_pessoa_endereco.pessoa.model.Pessoa;
 import br.com.db.desafio_crud_pessoa_endereco.pessoa.repository.PessoaRepository;
@@ -20,10 +20,10 @@ public class BuscarPessoaService {
         this.pessoaRepository = pessoaRepository;
     }
 
-    public List<PessoaDTO> buscarTodasPessoas() {
+    public List<PessoaResponseDTO> buscarTodasPessoas() {
         return pessoaRepository.findAll()
                 .stream()
-                .map(pessoa -> PessoaMapper.toPessoaDTO(pessoa))
+                .map(pessoa -> PessoaResponseMapper.toPessoaDTO(pessoa))
                 .collect(Collectors.toList());
     }
 

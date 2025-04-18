@@ -2,7 +2,7 @@ package br.com.db.desafio_crud_pessoa_endereco.pessoa.controller;
 
 import br.com.db.desafio_crud_pessoa_endereco.pessoa.dto.AtualizarPessoaRequestDTO;
 import br.com.db.desafio_crud_pessoa_endereco.pessoa.dto.CriarPessoaRequestDTO;
-import br.com.db.desafio_crud_pessoa_endereco.pessoa.dto.PessoaDTO;
+import br.com.db.desafio_crud_pessoa_endereco.pessoa.dto.PessoaResponseDTO;
 import br.com.db.desafio_crud_pessoa_endereco.pessoa.dto.mapper.CriarPessoaRequestMapper;
 import br.com.db.desafio_crud_pessoa_endereco.pessoa.model.Pessoa;
 import br.com.db.desafio_crud_pessoa_endereco.pessoa.service.AtualizarPessoaService;
@@ -33,7 +33,7 @@ public class PessoaController {
     }
 
     @GetMapping
-    public List<PessoaDTO> buscarTodasPessoas(){
+    public List<PessoaResponseDTO> buscarTodasPessoas(){
         return buscarPessoaService.buscarTodasPessoas();
     }
 

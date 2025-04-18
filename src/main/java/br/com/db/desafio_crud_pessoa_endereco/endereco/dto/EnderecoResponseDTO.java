@@ -1,6 +1,6 @@
 package br.com.db.desafio_crud_pessoa_endereco.endereco.dto;
 
-public class EnderecoDTO {
+public class EnderecoResponseDTO {
     private String rua;
     private String numero;
     private String bairro;
@@ -10,10 +10,10 @@ public class EnderecoDTO {
     private boolean enderecoPrincipal;
 
 
-    public EnderecoDTO() {
+    public EnderecoResponseDTO() {
     }
 
-    public EnderecoDTO(String rua, String numero, String bairro, String cidade, String estado, String cep) {
+    public EnderecoResponseDTO(String rua, String numero, String bairro, String cidade, String estado, String cep) {
         this.rua = rua;
         this.numero = numero;
         this.bairro = bairro;

@@ -2,7 +2,7 @@ package br.com.db.desafio_crud_pessoa_endereco.endereco.controller;
 
 import br.com.db.desafio_crud_pessoa_endereco.endereco.dto.AtualizarEnderecoRequestDTO;
 import br.com.db.desafio_crud_pessoa_endereco.endereco.dto.CriarEnderecoRequestDTO;
-import br.com.db.desafio_crud_pessoa_endereco.endereco.dto.EnderecoDTO;
+import br.com.db.desafio_crud_pessoa_endereco.endereco.dto.EnderecoResponseDTO;
 import br.com.db.desafio_crud_pessoa_endereco.endereco.dto.mapper.CriarEnderecoRequestMapper;
 import br.com.db.desafio_crud_pessoa_endereco.endereco.model.Endereco;
 import br.com.db.desafio_crud_pessoa_endereco.endereco.service.AtualizarEnderecoService;
@@ -37,7 +37,7 @@ public class EnderecoController {
     }
 
     @GetMapping
-    public List<EnderecoDTO> buscarTodosEnderecos() {
+    public List<EnderecoResponseDTO> buscarTodosEnderecos() {
         return buscarEnderecoService.buscarTodosEnderecos();
     }
 
