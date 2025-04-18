@@ -46,38 +46,6 @@ public class ControllerAdviceRest {
                 .body(erroPadrao);
     }
 
-    @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<ErroPadrao> handleHttpMessageNotReadable(HttpMessageNotReadableException ex) {
-        Throwable rootCause = ex.getCause();
-        ErroPadrao erroPadrao = new ErroPadrao();
-        erroPadrao.setDataHora(LocalDateTime.now());
-
-        if (rootCause instanceof InvalidFormatException invalidEx
-                && LocalDate.class.equals(invalidEx.getTargetType())) {
-
-            erroPadrao.setCodigoErro(ErroCodigo.DATA_INVALIDA.name());
-            erroPadrao.setMensagem("Formato de data inválido. Utilize o padrão: 11/09/1999");
-
-            Map<String, String> detalhes = Map.of(
-                    invalidEx.getPath().get(0).getFieldName(),
-                    "Data deve estar no formato dd/MM/yyyy"
-            );
-            erroPadrao.setErrors(detalhes);
-
-            return ResponseEntity
-                    .status(HttpStatus.BAD_REQUEST)
-                    .body(erroPadrao);
-        }
-
-        erroPadrao.setCodigoErro(ErroCodigo.REQUISICAO_INVALIDA.name());
-        erroPadrao.setMensagem("Não foi possível ler o JSON da requisição.");
-        erroPadrao.setErrors(null);
-
-        return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)
-                .body(erroPadrao);
-    }
-
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<ErroPadrao> handleDataIntegrityViolation(DataIntegrityViolationException ex) {
         ErroPadrao erroPadrao = new ErroPadrao();
@@ -104,6 +72,40 @@ public class ControllerAdviceRest {
             errors.put(campo, mensagemErroCampo);
         });
         erroPadrao.setErrors(errors);
+
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(erroPadrao);
+    }
+
+
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<ErroPadrao> handleHttpMessageNotReadable(HttpMessageNotReadableException ex) {
+        Throwable rootCause = ex.getCause();
+        ErroPadrao erroPadrao = new ErroPadrao();
+        erroPadrao.setDataHora(LocalDateTime.now());
+
+        if (rootCause instanceof InvalidFormatException invalidEx
+                && LocalDate.class.equals(invalidEx.getTargetType())) {
+
+            erroPadrao.setCodigoErro(ErroCodigo.DATA_INVALIDA.name());
+            erroPadrao.setMensagem("Formato de data inválido. Utilize o padrão: 11/09/1999");
+
+            Map<String, String> detalhes = Map.of(
+                    invalidEx.getPath().get(0).getFieldName(),
+                    "Data deve estar no formato dd/MM/yyyy"
+            );
+            erroPadrao.setErrors(detalhes);
+
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(erroPadrao);
+        }
+
+        erroPadrao.setCodigoErro(ErroCodigo.REQUISICAO_INVALIDA.name());
+        erroPadrao.setMensagem("Não foi possível ler o JSON da requisição.");
+        erroPadrao.setErrors(null);
 
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)

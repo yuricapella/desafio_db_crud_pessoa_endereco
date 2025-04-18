@@ -4,6 +4,7 @@ import br.com.db.desafio_crud_pessoa_endereco.endereco.dto.EnderecoDTO;
 import br.com.db.desafio_crud_pessoa_endereco.endereco.dto.mapper.EnderecoMapper;
 import br.com.db.desafio_crud_pessoa_endereco.endereco.model.Endereco;
 import br.com.db.desafio_crud_pessoa_endereco.endereco.repository.EnderecoRepository;
+import br.com.db.desafio_crud_pessoa_endereco.exception.EnderecoNaoEncontrado;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,6 +30,6 @@ public class BuscarEnderecoService {
     public Endereco buscarEnderecoPorId(Long id) {
         Optional<Endereco> enderecoOptional = enderecoRepository.findById(id);
         return enderecoOptional
-                .orElseThrow(() -> new RuntimeException("Endereço com ID " + id + " não encontrado"));
+                .orElseThrow(() -> new EnderecoNaoEncontrado("Endereço com ID " + id + " não encontrado"));
     }
 }

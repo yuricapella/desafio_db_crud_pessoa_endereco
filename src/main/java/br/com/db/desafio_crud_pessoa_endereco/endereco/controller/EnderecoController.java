@@ -58,7 +58,7 @@ public class EnderecoController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Endereco> atualizarEnderecoPorId(@PathVariable(value = "id") Long id,
-                                                           @RequestBody AtualizarEnderecoRequestDTO endereco) {
+                                                           @RequestBody @Valid AtualizarEnderecoRequestDTO endereco) {
         atualizarEnderecoService.atualizarEnderecoPorId(endereco, id);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
