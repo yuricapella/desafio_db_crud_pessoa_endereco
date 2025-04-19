@@ -1,6 +1,6 @@
 [⬅ Voltar ao README](README.md)
 
-# 🗒️ Anotações do Projeto
+# 🗒️ Anotações Técnicas do Projeto
 
 ## 📅 Formato de Datas
 - Utilizado `@JsonFormat(pattern = "dd/MM/yyyy")` para exibir a data no Postman de forma amigável.
@@ -12,12 +12,12 @@
 - Além disso, havia inconsistências entre formatos `000.000.000-00` e `00000000000`, o que permitia duplicatas.
 - Com a nova abordagem, é feita uma padronização interna e validação customizada.
 
-## 🔒 Melhorias futuras de segurança
+## 🔒 Melhorias Futuras de Segurança
 - Adicionar validações para impedir endereços duplicados para a mesma pessoa.
 - Resgatar o uso da anotação `@CPF` com tratamento adequado.
 - Impedir exclusão de todos os endereços de uma pessoa, mantendo ao menos um.
 
-## 🌟 Diferenciais não implementados
+## 🌟 Diferenciais Não Implementados
 - Garantir que apenas um endereço seja o principal por pessoa.
 - Atualmente, é possível cadastrar múltiplos endereços com `enderecoPrincipal = true`.
 
@@ -35,7 +35,7 @@
 
 ## 🔄 Execução do Projeto
 - O projeto roda normalmente com localhost e Postman.
-- Problemas encontrados com os comandos ./mvnw clean install e ./mvnw spring-boot:run devido a erros de encoding.
+- Problemas encontrados com os comandos `./mvnw clean install` e `./mvnw spring-boot:run` devido a erros de encoding.
 - Melhorias serão implementadas posteriormente.
 
 ## 🧪 Testes
@@ -47,4 +47,3 @@
 
 ## 🔄 Controle de Versão
 - Todas as mudanças futuras serão colocadas em uma branch nova para facilitar a validação do recrutador e não alterar o que foi feito até o prazo acordado.
-
