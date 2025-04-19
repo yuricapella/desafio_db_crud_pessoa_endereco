@@ -97,10 +97,7 @@ Anotações pessoais e técnicas que apontam:
 ---
 
 ## 📌 Observações Finais
-
 - O projeto está preparado para receber melhorias como:
-  - Swagger para documentação da API
-  - Paginação nos endpoints de listagem
   - Validações adicionais por meio das classes `PessoaValidator` e `EnderecoValidator`
 - O foco foi atender completamente o escopo principal com clareza, organização e boa arquitetura.
 
