@@ -65,7 +65,7 @@ Anotações pessoais e técnicas que apontam:
 - Decisões tomadas durante o desenvolvimento
 - Possíveis melhorias futuras (ex: utilização dos Validators criados)
 - Dicas sobre boas práticas
-- Motivos pelos quais algumas ideias não foram implementadas por falta de tempo (ex: Swagger, paginação)
+- Motivos pelos quais algumas ideias não foram implementadas
 
 ---
 
@@ -93,17 +93,9 @@ Anotações pessoais e técnicas que apontam:
 | Informar qual endereço é o principal             | ✅     |
 | Swagger                                          | ✅     |
 | Paginação                                        | ✅     |
-| Teste Integração                                 | ✅     |
+| Teste Integração                                 | ❌     |
 
 ---
-
-## 📌 Observações Finais
-- O projeto está preparado para receber melhorias como:
-  - Validações adicionais por meio das classes `PessoaValidator` e `EnderecoValidator`
-- O foco foi atender completamente o escopo principal com clareza, organização e boa arquitetura.
-
----
-
 Feito com dedicação 💙 no desafio da **DB**.
 
 [🔝 Voltar ao topo](#voltar-ao-topo)
