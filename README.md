@@ -71,7 +71,7 @@ Anotações pessoais e técnicas que apontam:
 
 ## ✅ Requisitos Atendidos
 
-| Requisito                                                        | Status |
+| Implementado                                                     | Status |
 |------------------------------------------------------------------|--------|
 | Listar todas as pessoas e seus respectivos endereços             | ✅     |
 | Criar uma nova pessoa com um ou mais endereços                   | ✅     |
@@ -82,17 +82,18 @@ Anotações pessoais e técnicas que apontam:
 | Tratar exceções com @ControllerAdvice                            | ✅     |
 | Banco de dados H2                                                | ✅     |
 | Respostas JSON                                                   | ✅     |
+| Boas práticas e arquitetura                                      | ✅     |
+| Testes com Postman                                               | ✅     |
+
 
 ### Diferenciais
 
 | Diferencial                                       | Status |
 |--------------------------------------------------|--------|
 | Informar qual endereço é o principal             | ✅     |
-| Boas práticas e arquitetura                      | ✅     |
-| Testes com Postman                               | ✅     |
 | Swagger                                          | ✅     |
 | Paginação                                        | ✅     |
-| Teste Integração                                 | ❌     |
+| Teste Integração                                 | ✅     |
 
 ---
 
