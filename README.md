@@ -22,7 +22,7 @@ Implementar uma API REST em Java usando **Spring Boot** que realize o CRUD compl
 - Mostrar a **idade** da pessoa com base na data de nascimento
 - Definir qual é o **endereço principal**
 - Tratamento global de exceções
-- Validações básicas com Bean Validation (`@NotBlank`, `@CPF`)
+- Validações básicas com Bean Validation
 - Respostas padronizadas em JSON
 - Banco de dados **H2** em memória
 - Testes com **Postman** (collection inclusa no projeto)
