@@ -78,7 +78,7 @@ Anotações pessoais e técnicas que apontam:
 | Atualizar os dados de uma pessoa e/ou seu(s) endereço(s)         | ✅     |
 | Excluir uma pessoa e todos os seus endereços                     | ✅     |
 | Mostrar a idade da pessoa                                        | ✅     |
-| Implementar validações básicas para campos obrigatórios         | ✅     |
+| Implementar validações básicas para campos obrigatórios          | ✅     |
 | Tratar exceções com @ControllerAdvice                            | ✅     |
 | Banco de dados H2                                                | ✅     |
 | Respostas JSON                                                   | ✅     |
@@ -90,8 +90,9 @@ Anotações pessoais e técnicas que apontam:
 | Informar qual endereço é o principal             | ✅     |
 | Boas práticas e arquitetura                      | ✅     |
 | Testes com Postman                               | ✅     |
-| Swagger                                          | ❌     |
-| Paginação                                        | ❌     |
+| Swagger                                          | ✅     |
+| Paginação                                        | ✅     |
+| Teste Integração                                 | ❌     |
 
 ---
 
