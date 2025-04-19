@@ -12,6 +12,9 @@ import br.com.db.desafio_crud_pessoa_endereco.endereco.service.DeletarEnderecoSe
 import br.com.db.desafio_crud_pessoa_endereco.pessoa.dto.PessoaResponseDTO;
 import br.com.db.desafio_crud_pessoa_endereco.pessoa.model.Pessoa;
 import br.com.db.desafio_crud_pessoa_endereco.pessoa.repository.PessoaRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -22,6 +25,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/enderecos")
+@Tag(name = "Endereço", description = "Operações relacionadas ao gerenciamento de endereços")
 public class EnderecoController {
 
     private final BuscarEnderecoService buscarEnderecoService;
@@ -39,6 +43,14 @@ public class EnderecoController {
     }
 
     @GetMapping
+    @Operation(
+            summary = "Buscar todos os endereços",
+            description = "Recupera uma lista paginada de endereços. É possível definir a página, tamanho e ordenação.",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Endereços encontrados com sucesso"),
+                    @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
+            }
+    )
     public ResponseEntity<Page<EnderecoResponseDTO>> buscarTodosEnderecos(
         @RequestParam(value = "page", defaultValue = "0") int page,
         @RequestParam(value = "size", defaultValue = "10") int size,
@@ -49,11 +61,30 @@ public class EnderecoController {
     }
 
     @GetMapping(path = "/{id}")
+    @Operation(
+            summary = "Buscar endereço por ID",
+            description = "Recupera um endereço específico pelo seu ID.",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Endereço encontrado com sucesso"),
+                    @ApiResponse(responseCode = "404", description = "Endereço não encontrado"),
+                    @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
+            }
+    )
     public Endereco buscarEnderecoPorId(@PathVariable(value = "id") Long id) {
         return buscarEnderecoService.buscarEnderecoPorId(id);
     }
 
     @PostMapping
+    @Operation(
+            summary = "Criar novo endereço",
+            description = "Cria um novo endereço associado a uma pessoa existente.",
+            responses = {
+                    @ApiResponse(responseCode = "201", description = "Endereço criado com sucesso"),
+                    @ApiResponse(responseCode = "400", description = "Dados inválidos"),
+                    @ApiResponse(responseCode = "404", description = "Pessoa não encontrada"),
+                    @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
+            }
+    )
     public ResponseEntity<Endereco> criarEndereco(@RequestBody @Valid CriarEnderecoRequestDTO endereco) {
         Pessoa pessoa = pessoaRepository.findById(endereco.getPessoaId())
                 .orElseThrow(() -> new RuntimeException("Pessoa não encontrada"));
@@ -64,6 +95,16 @@ public class EnderecoController {
     }
 
     @PutMapping("/{id}")
+    @Operation(
+            summary = "Atualizar endereço",
+            description = "Atualiza os dados de um endereço existente pelo seu ID.",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Endereço atualizado com sucesso"),
+                    @ApiResponse(responseCode = "400", description = "Dados inválidos"),
+                    @ApiResponse(responseCode = "404", description = "Endereço não encontrado"),
+                    @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
+            }
+    )
     public ResponseEntity<Endereco> atualizarEnderecoPorId(@PathVariable(value = "id") Long id,
                                                            @RequestBody @Valid AtualizarEnderecoRequestDTO endereco) {
         atualizarEnderecoService.atualizarEnderecoPorId(endereco, id);
@@ -71,6 +112,15 @@ public class EnderecoController {
     }
 
     @DeleteMapping("/{id}")
+    @Operation(
+            summary = "Deletar endereço",
+            description = "Remove um endereço pelo ID.",
+            responses = {
+                    @ApiResponse(responseCode = "204", description = "Endereço removido com sucesso"),
+                    @ApiResponse(responseCode = "404", description = "Endereço não encontrado"),
+                    @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
+            }
+    )
     public ResponseEntity<Void> deletarEnderecoPorId(@PathVariable(value = "id") Long id) {
         deletarEnderecoService.deletarEnderecoPorId(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
