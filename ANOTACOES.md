@@ -20,7 +20,6 @@
 ## 🌟 Diferenciais não implementados
 - Garantir que apenas um endereço seja o principal por pessoa.
 - Atualmente, é possível cadastrar múltiplos endereços com `enderecoPrincipal = true`.
-- A lógica foi iniciada, mas não concluída por falta de tempo.
 
 ## 📆 Armazenamento de Datas
 - Ainda em dúvida sobre o padrão ideal: armazenar como `String` e validar manualmente ou manter como `LocalDate`.
@@ -33,3 +32,19 @@
 - Tentou-se validar regras de negócio nas Services.
 - Contudo, isso interferiu no tratamento de exceções pelo `ControllerAdvice`, fazendo erros validados caírem como erro 500.
 - As classes foram mantidas no projeto, mas desativadas temporariamente para evitar conflito.
+
+## 🔄 Execução do Projeto
+- O projeto roda normalmente com localhost e Postman.
+- Problemas encontrados com os comandos ./mvnw clean install e ./mvnw spring-boot:run devido a erros de encoding.
+- Melhorias serão implementadas posteriormente.
+
+## 🧪 Testes
+- Estrutura principal dos testes foi implementada, mas não refinada para execução correta.
+- Testes serão finalizados posteriormente em outra branch após a entrega do projeto.
+
+## 🖥️ Frontend
+- Um frontend será desenvolvido em outra branch posteriormente.
+
+## 🔄 Controle de Versão
+- Todas as mudanças futuras serão colocadas em uma branch nova para facilitar a validação do recrutador e não alterar o que foi feito até o prazo acordado.
+
