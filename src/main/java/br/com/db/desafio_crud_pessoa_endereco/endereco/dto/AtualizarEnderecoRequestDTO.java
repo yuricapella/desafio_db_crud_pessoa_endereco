@@ -1,37 +1,45 @@
 package br.com.db.desafio_crud_pessoa_endereco.endereco.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
+@Schema(description = "DTO para atualização de um endereço existente")
 public class AtualizarEnderecoRequestDTO {
-
+    @Schema(description = "Nome da rua", example = "Rua das Flores", required = true)
     @NotBlank(message = "Rua não pode estar vazia.")
     @Size(min = 3, max = 100, message = "Rua deve conter entre 3 e 100 caracteres.")
     private String rua;
 
+    @Schema(description = "Número do endereço", example = "123", required = true)
     @NotBlank(message = "Número não pode estar vazio.")
     @Size(min = 1, max = 10, message = "Número deve conter entre 1 e 10 caracteres.")
     @Pattern(regexp = "\\d+[A-Za-z]?", message = "Número deve conter apenas dígitos e, opcionalmente, uma letra (ex: 123 ou 123A).")
     private String numero;
 
+    @Schema(description = "Nome do bairro", example = "Centro", required = true)
     @NotBlank(message = "Bairro não pode estar vazio.")
     @Size(min = 3, max = 50, message = "Bairro deve conter entre 3 e 50 caracteres.")
     private String bairro;
 
+    @Schema(description = "Nome da cidade", example = "São Paulo", required = true)
     @NotBlank(message = "Cidade não pode estar vazia.")
     @Size(min = 3, max = 50, message = "Cidade deve conter entre 3 e 50 caracteres.")
     private String cidade;
 
+    @Schema(description = "Sigla do estado com 2 letras", example = "SP", required = true)
     @NotBlank(message = "Estado não pode estar vazio.")
     @Pattern(regexp = "[A-Za-z]{2}", message = "Estado deve conter exatamente 2 letras.")
     private String estado;
 
+    @Schema(description = "CEP sem traços (apenas números)", example = "12345678", required = true)
     @NotBlank(message = "CEP não pode estar vazio.")
     @Pattern(regexp = "\\d{8}", message = "CEP deve conter exatamente 8 números, sem traços.")
     private String cep;
 
+    @Schema(description = "Indica se este é o endereço principal", example = "true", required = true)
     @NotNull(message = "Endereço principal é obrigatório.")
     private Boolean enderecoPrincipal;
 

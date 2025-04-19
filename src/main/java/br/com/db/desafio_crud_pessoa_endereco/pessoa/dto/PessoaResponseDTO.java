@@ -3,16 +3,27 @@ package br.com.db.desafio_crud_pessoa_endereco.pessoa.dto;
 import br.com.db.desafio_crud_pessoa_endereco.endereco.dto.EnderecoResponseDTO;
 import br.com.db.desafio_crud_pessoa_endereco.util.FormataCPF;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@Schema(description = "DTO de resposta com dados de uma pessoa")
 public class PessoaResponseDTO {
+    @Schema(description = "Nome da pessoa", example = "João Silva")
     private String nome;
+
+    @Schema(description = "CPF da pessoa formatado", example = "123.456.789-01")
     private String cpf;
+
+    @Schema(description = "Data de nascimento", example = "01/01/1990")
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
+
+    @Schema(description = "Idade calculada da pessoa", example = "33")
     private int idade;
+
+    @Schema(description = "Lista de endereços da pessoa")
     private List<EnderecoResponseDTO> enderecos;
 
     public PessoaResponseDTO(String nome, String cpf, LocalDate dataNascimento, int idade) {

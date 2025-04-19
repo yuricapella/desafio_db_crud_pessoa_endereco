@@ -1,12 +1,28 @@
 package br.com.db.desafio_crud_pessoa_endereco.endereco.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "DTO de resposta com dados de um endereço")
 public class EnderecoResponseDTO {
+    @Schema(description = "Nome da rua", example = "Rua das Flores")
     private String rua;
+
+    @Schema(description = "Número do endereço", example = "123")
     private String numero;
+
+    @Schema(description = "Nome do bairro", example = "Centro")
     private String bairro;
+
+    @Schema(description = "Nome da cidade", example = "São Paulo")
     private String cidade;
+
+    @Schema(description = "Sigla do estado", example = "SP")
     private String estado;
+
+    @Schema(description = "CEP do endereço", example = "12345678")
     private String cep;
+
+    @Schema(description = "Indica se é o endereço principal", example = "true")
     private boolean enderecoPrincipal;
 
 

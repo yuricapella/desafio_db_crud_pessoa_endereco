@@ -5,11 +5,16 @@ import br.com.db.desafio_crud_pessoa_endereco.endereco.dto.mapper.EnderecoRespon
 import br.com.db.desafio_crud_pessoa_endereco.endereco.model.Endereco;
 import br.com.db.desafio_crud_pessoa_endereco.endereco.repository.EnderecoRepository;
 import br.com.db.desafio_crud_pessoa_endereco.exception.EnderecoNaoEncontrado;
+import br.com.db.desafio_crud_pessoa_endereco.pessoa.dto.PessoaResponseDTO;
+import br.com.db.desafio_crud_pessoa_endereco.pessoa.dto.mapper.PessoaResponseMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 @Service
 public class BuscarEnderecoService {
@@ -20,11 +25,11 @@ public class BuscarEnderecoService {
         this.enderecoRepository = enderecoRepository;
     }
 
-    public List<EnderecoResponseDTO> buscarTodosEnderecos() {
-        return enderecoRepository.findAll()
-                .stream()
-                .map(EnderecoResponseMapper::toEnderecoDTO)
-                .collect(Collectors.toList());
+    public Page<EnderecoResponseDTO> buscarTodosEnderecos(int page, int size, String sort) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sort));
+
+        return enderecoRepository.findAll(pageable)
+                .map(endereco -> EnderecoResponseMapper.toEnderecoDTO(endereco));
     }
 
     public Endereco buscarEnderecoPorId(Long id) {

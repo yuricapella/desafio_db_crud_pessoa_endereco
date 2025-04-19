@@ -1,21 +1,26 @@
 package br.com.db.desafio_crud_pessoa_endereco.endereco.validator;
 
 import br.com.db.desafio_crud_pessoa_endereco.endereco.model.Endereco;
+import br.com.db.desafio_crud_pessoa_endereco.endereco.repository.EnderecoRepository;
+import br.com.db.desafio_crud_pessoa_endereco.pessoa.model.Pessoa;
 import br.com.db.desafio_crud_pessoa_endereco.pessoa.service.BuscarPessoaService;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 @Component
 public class EnderecoValidator {
 
     private final BuscarPessoaService buscarPessoaService;
+    private final EnderecoRepository enderecoRepository;
     private static final Pattern NUMERO_PATTERN = Pattern.compile("\\d+[A-Za-z]?");
     private static final Pattern ESTADO_PATTERN = Pattern.compile("[A-Za-z]{2}");
     private static final Pattern CEP_PATTERN = Pattern.compile("\\d{8}");
 
-    public EnderecoValidator(BuscarPessoaService buscarPessoaService) {
+    public EnderecoValidator(BuscarPessoaService buscarPessoaService, EnderecoRepository enderecoRepository) {
         this.buscarPessoaService = buscarPessoaService;
+        this.enderecoRepository = enderecoRepository;
     }
 
     public void validarEndereco(Endereco endereco, boolean isUpdate) {
