@@ -9,7 +9,7 @@ Este projeto foi desenvolvido como parte do programa **DB | CRESCER com propósi
 
 ## 🎯 Objetivo
 
-Implementar uma API REST em Java usando Spring Boot que realize o CRUD completo para as entidades **Pessoa** e **Endereço**, com relacionamento **1:N (um-para-muitos)**, tratamento de exceções, validações e retorno em formato JSON.
+Implementar uma API REST em Java usando **Spring Boot** que realize o CRUD completo para as entidades **Pessoa** e **Endereço**, com relacionamento **1:N (um-para-muitos)**, tratamento de exceções, validações e retorno em formato JSON.
 
 ---
 
@@ -45,8 +45,9 @@ Implementar uma API REST em Java usando Spring Boot que realize o CRUD completo 
 ## 🧪 Testes
 
 A collection do Postman cobre:
-- ✅ Casos de sucesso (CRUD completo)
-- ❌ Casos de erro (validações, dados inválidos, não encontrados)
+
+- ✅ **Casos de sucesso** (CRUD completo)
+- ❌ **Casos de erro** (validações, dados inválidos, não encontrados)
 
 Organizados por entidade (`Pessoa`, `Endereço`) e separados em pastas de **sucesso** e **erro**, garantindo cobertura dos principais cenários de teste.
 
@@ -67,6 +68,9 @@ Anotações pessoais e técnicas que apontam:
 - Dicas sobre boas práticas
 - Motivos pelos quais algumas ideias não foram implementadas
 
+### 🔹 [`DESAFIO.md`](./DESAFIO.md)
+Documentação do desafio, incluindo os requisitos, pontos a serem avaliados e diferenciais.
+
 ---
 
 ## ✅ Requisitos Atendidos
@@ -85,17 +89,19 @@ Anotações pessoais e técnicas que apontam:
 | Boas práticas e arquitetura                                      | ✅     |
 | Testes com Postman                                               | ✅     |
 
+---
 
-### Diferenciais
+## 🌟 Diferenciais
 
 | Diferencial                                       | Status |
 |--------------------------------------------------|--------|
 | Informar qual endereço é o principal             | ✅     |
 | Swagger                                          | ✅     |
 | Paginação                                        | ✅     |
-| Teste Integração                                 | ❌     |
+| Teste de Integração                              | ❌     |
 
 ---
+
 Feito com dedicação 💙 no desafio da **DB**.
 
 [🔝 Voltar ao topo](#voltar-ao-topo)
