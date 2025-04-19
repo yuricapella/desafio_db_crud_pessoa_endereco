@@ -7,6 +7,7 @@
     └── wrapper
     │   └── maven-wrapper.properties
 ├── ANOTACOES.md
+├── ESTRUTURA.md
 ├── README.md
 ├── mvnw
 ├── mvnw.cmd
@@ -20,7 +21,8 @@
         │   │           └── desafio_crud_pessoa_endereco
         │   │               ├── DesafioCrudPessoaEnderecoApplication.java
         │   │               ├── config
-        │   │                   └── ControllerAdviceRest.java
+        │   │                   ├── ControllerAdviceRest.java
+        │   │                   └── OpenApiConfig.java
         │   │               ├── endereco
         │   │                   ├── controller
         │   │                   │   └── EnderecoController.java
@@ -85,5 +87,4 @@
                     └── db
                         └── desafio_crud_pessoa_endereco
                             └── DesafioCrudPessoaEnderecoApplicationTests.java
-
 ```
