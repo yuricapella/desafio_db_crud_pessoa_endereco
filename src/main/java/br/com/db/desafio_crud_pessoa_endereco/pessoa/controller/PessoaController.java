@@ -10,6 +10,7 @@ import br.com.db.desafio_crud_pessoa_endereco.pessoa.service.BuscarPessoaService
 import br.com.db.desafio_crud_pessoa_endereco.pessoa.service.CriarPessoaService;
 import br.com.db.desafio_crud_pessoa_endereco.pessoa.service.DeletarPessoaService;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,8 +34,13 @@ public class PessoaController {
     }
 
     @GetMapping
-    public List<PessoaResponseDTO> buscarTodasPessoas(){
-        return buscarPessoaService.buscarTodasPessoas();
+    public ResponseEntity<Page<PessoaResponseDTO>> buscarTodasPessoas(
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = "10") int size,
+            @RequestParam(value = "sort", defaultValue = "nome") String sort) {
+
+        Page<PessoaResponseDTO> pessoas = buscarPessoaService.buscarTodasPessoas(page, size, sort);
+        return ResponseEntity.ok(pessoas);
     }
 
     @GetMapping(path = "/{id}")

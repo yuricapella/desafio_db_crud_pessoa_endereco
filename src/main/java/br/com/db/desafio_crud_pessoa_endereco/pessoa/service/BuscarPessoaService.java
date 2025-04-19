@@ -5,6 +5,10 @@ import br.com.db.desafio_crud_pessoa_endereco.pessoa.dto.mapper.PessoaResponseMa
 import br.com.db.desafio_crud_pessoa_endereco.exception.PessoaNaoEncontradaException;
 import br.com.db.desafio_crud_pessoa_endereco.pessoa.model.Pessoa;
 import br.com.db.desafio_crud_pessoa_endereco.pessoa.repository.PessoaRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,11 +24,11 @@ public class BuscarPessoaService {
         this.pessoaRepository = pessoaRepository;
     }
 
-    public List<PessoaResponseDTO> buscarTodasPessoas() {
-        return pessoaRepository.findAll()
-                .stream()
-                .map(pessoa -> PessoaResponseMapper.toPessoaDTO(pessoa))
-                .collect(Collectors.toList());
+    public Page<PessoaResponseDTO> buscarTodasPessoas(int page, int size, String sort) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sort));
+
+        return pessoaRepository.findAll(pageable)
+                .map(pessoa -> PessoaResponseMapper.toPessoaDTO(pessoa));
     }
 
     public Pessoa buscarPessoaPorId(Long id) {

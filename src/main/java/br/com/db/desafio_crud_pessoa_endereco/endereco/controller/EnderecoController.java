@@ -9,9 +9,11 @@ import br.com.db.desafio_crud_pessoa_endereco.endereco.service.AtualizarEndereco
 import br.com.db.desafio_crud_pessoa_endereco.endereco.service.BuscarEnderecoService;
 import br.com.db.desafio_crud_pessoa_endereco.endereco.service.CriarEnderecoService;
 import br.com.db.desafio_crud_pessoa_endereco.endereco.service.DeletarEnderecoService;
+import br.com.db.desafio_crud_pessoa_endereco.pessoa.dto.PessoaResponseDTO;
 import br.com.db.desafio_crud_pessoa_endereco.pessoa.model.Pessoa;
 import br.com.db.desafio_crud_pessoa_endereco.pessoa.repository.PessoaRepository;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,8 +39,13 @@ public class EnderecoController {
     }
 
     @GetMapping
-    public List<EnderecoResponseDTO> buscarTodosEnderecos() {
-        return buscarEnderecoService.buscarTodosEnderecos();
+    public ResponseEntity<Page<EnderecoResponseDTO>> buscarTodosEnderecos(
+        @RequestParam(value = "page", defaultValue = "0") int page,
+        @RequestParam(value = "size", defaultValue = "10") int size,
+        @RequestParam(value = "sort", defaultValue = "cep") String sort) {
+
+        Page<EnderecoResponseDTO> enderecos = buscarEnderecoService.buscarTodosEnderecos(page, size, sort);
+        return ResponseEntity.ok(enderecos);
     }
 
     @GetMapping(path = "/{id}")
